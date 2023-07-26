@@ -38,7 +38,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -67,9 +67,6 @@ RPROMPT="%{$fg[yellow]%}[%D{%L:%M:%S}]"
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
-# PATH
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -92,4 +89,4 @@ if [ -f '/Users/lucataco/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Us
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/lucataco/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lucataco/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-#source /Users/lucataco/.docker/init-zsh.sh || true # Added by Docker Desktop
+
