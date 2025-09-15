@@ -1,5 +1,14 @@
 [user]
-	email = me@lucataco.com
-	name = Luis C
-[core]
-	editor = vim
+    name = Luis Catacora
+    email = me@lucataco.com
+	signingkey = /Users/lucataco/.ssh/id_ed25519_signing
+[commit]
+    gpgsign = true  # Sign all commits
+[gpg]
+    format = ssh  # Use SSH for signing
+[gpg "ssh"]
+    program = /usr/bin/ssh-keygen  # Path to ssh-keygen
+[tag]
+    gpgsign = true  # Sign all tags
+[credential]
+    helper = osxkeychain  # Secure credential storage for macOS
