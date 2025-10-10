@@ -1,4 +1,7 @@
-tap "ngrok/ngrok"
+# Taps
+tap 'brevdev/brev'
+
+# Brews
 brew "arduino-cli"
 brew "cog"
 brew "ffmpeg"
