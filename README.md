@@ -16,9 +16,3 @@ See [Brewfile](Brewfile)
 git config --global user.name "Luis Catacora"
 git config --global user.email me@lucataco.com
 ```
-
-## claude
-
-```sh
-ln -s ~/git/zeke/dotfiles/.claude ~/.claude
-```
