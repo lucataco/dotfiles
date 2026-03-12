@@ -1,1 +1,21 @@
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Secrets — never commit these
+*.pem
+*.key
+id_rsa*
+id_ed25519*

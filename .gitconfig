@@ -1,8 +1,146 @@
 [user]
-	name = Luis Catacora
-	email = me@lucataco.com
-	signingkey = /Users/lucataco/.ssh/id_rsa.pub
-[gpg]
-	format = ssh
+    name = Luis Catacora
+    email = me@lucataco.com
+	signingkey = /Users/lucataco/.ssh/id_ed25519_signing
 [commit]
-	gpgsign = true
+    gpgsign = true  # Sign all commits
+[gpg]
+    format = ssh  # Use SSH for signing
+[gpg "ssh"]
+    program = /usr/bin/ssh-keygen  # Path to ssh-keygen
+[tag]
+    gpgsign = true  # Sign all tags
+[credential]
+    helper = osxkeychain  # Secure credential storage for macOS
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[core]
+	pager = delta
+	excludesfile = ~/.gitignore_global
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+	syntax-theme = Monokai Extended
+	plus-style = "syntax #003800"
+	minus-style = "syntax #3f0001"
+	features = line-numbers decorations
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+	hunk-header-decoration-style = cyan box ul
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[pull]
+	rebase = false
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[init]
+	defaultBranch = main
+
+[color]
+	ui = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[alias]
+	# Basic shortcuts
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+
+	# Logging
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+	logfull = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
+	# Diff shortcuts
+	d = diff
+	ds = diff --staged
+	dc = diff --cached
+
+	# Status shortcuts
+	s = status -s
+
+	# Branch management
+	branches = branch -a
+	tags = tag -l
+	remotes = remote -v
+
+	# Stash operations
+	save = stash save
+	pop = stash pop
+
+	# Undo operations
+	undo = reset --soft HEAD~1
+	amend = commit --amend --no-edit
+
+	# Quick commits
+	cm = commit -m
+	cam = commit -am
+
+	# Pull/push shortcuts
+	pl = pull
+	ps = push
+	psu = push -u origin HEAD
+
+	# Show changes
+	changed = diff --name-only
+	contributors = shortlog --summary --numbered
+
+	# Cleanup
+	cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master' | xargs -n 1 git branch -d"
+
+	# Quick add
+	a = add
+	aa = add --all
+
+	# Interactive rebase
+	rb = rebase
+	rbi = rebase -i
+
+	# Find commits by message
+	find = "!git log --all --grep="
+
+	# Show files in commit
+	files = diff-tree --no-commit-id --name-only -r
+
+	# Aliases for workflow
+	wip = commit -am "WIP"
+	unwip = reset HEAD~1
